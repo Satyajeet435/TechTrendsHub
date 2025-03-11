@@ -5,23 +5,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TechTrendsHub</title>
     <style>
-        body { font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #f4f4f4; }
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #f4f4f4; transition: background-color 0.3s ease-in-out; }
         header { background: #222; color: #fff; padding: 20px; font-size: 24px; text-align: center; box-shadow: 0 4px 8px rgba(0,0,0,0.2); }
         .container { width: 80%; margin: auto; overflow: hidden; }
-        .product, .blog-post { background: #fff; margin: 20px; padding: 15px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); text-align: center; }
+        .product, .blog-post { background: #fff; margin: 20px; padding: 15px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); text-align: center; transition: transform 0.3s ease-in-out; }
+        .product:hover, .blog-post:hover { transform: scale(1.05); }
         img { max-width: 100%; height: auto; border-radius: 8px; }
         .btn { display: inline-block; padding: 10px 15px; background: #007bff; color: #fff; text-decoration: none; border-radius: 5px; transition: 0.3s; }
         .btn:hover { background: #0056b3; }
         .blog-post ul { text-align: left; padding-left: 20px; }
         .blog-post img { width: 80%; margin-bottom: 10px; }
+        nav { background: #333; padding: 10px; text-align: center; }
+        nav a { color: #fff; text-decoration: none; padding: 10px 20px; display: inline-block; transition: background 0.3s; }
+        nav a:hover { background: #007bff; border-radius: 5px; }
+        .dark-mode { background-color: #121212; color: #fff; }
+        .dark-mode .product, .dark-mode .blog-post { background: #222; color: #fff; }
+        .dark-mode header, .dark-mode nav { background: #000; }
+        .dark-mode-toggle { position: fixed; top: 10px; right: 10px; background: #007bff; color: #fff; border: none; padding: 10px 15px; border-radius: 5px; cursor: pointer; transition: 0.3s; }
+        .dark-mode-toggle:hover { background: #0056b3; }
     </style>
 </head>
 <body>
     <header>Welcome to TechTrendsHub</header>
+    <nav>
+        <a href="#">Home</a>
+        <a href="#products">Products</a>
+        <a href="#blogs">Blog</a>
+        <a href="#contact">Contact</a>
+    </nav>
+    <button class="dark-mode-toggle" onclick="toggleDarkMode()">Toggle Dark Mode</button>
     <div class="container">
-        <h2>Featured Tech Gadgets</h2>
+        <h2 id="products">Featured Tech Gadgets</h2>
         <div class="product">
-            <img src="https://via.placeholder.com/300" alt="Gadget 1">
+            <img src="https://m.media-amazon.com/images/I/61SUj2aKoEL._SX679_.jpg" alt="Gadget 1">
             <h3>Gadget Name 1</h3>
             <p>Latest tech gadget with amazing features.</p>
             <a href="#" class="btn">Buy on Amazon</a>
@@ -33,7 +49,7 @@
             <a href="#" class="btn">Buy on Amazon</a>
         </div>
         
-        <h2>Latest Blog Posts</h2>
+        <h2 id="blogs">Latest Blog Posts</h2>
         <div class="blog-post">
             <h3>Best Wireless Earbuds of 2025</h3>
             <img src="https://via.placeholder.com/600x300" alt="Wireless Earbuds">
@@ -61,5 +77,10 @@
             <p><a href="#" class="btn">Find Your Smartwatch</a></p>
         </div>
     </div>
+    <script>
+        function toggleDarkMode() {
+            document.body.classList.toggle("dark-mode");
+        }
+    </script>
 </body>
 </html>
