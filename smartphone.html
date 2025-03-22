@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smartphones - TechTrendsHub</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #f4f4f4; }
+        header { background: #222; color: #fff; padding: 20px; text-align: center; font-size: 24px; }
+        .container { width: 90%; margin: auto; padding: 20px; }
+        .smartphone { background: #fff; padding: 15px; margin: 10px 0; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+        .smartphone img { width: 150px; border-radius: 8px; float: left; margin-right: 15px; }
+        .smartphone h3 { margin: 0; }
+        .specs { font-size: 14px; color: #555; }
+        .buy-btn { display: inline-block; padding: 10px 15px; background: #007bff; color: #fff; text-decoration: none; border-radius: 5px; margin-top: 10px; }
+        .buy-btn:hover { background: #0056b3; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { padding: 10px; border: 1px solid #ddd; text-align: left; }
+        th { background: #333; color: #fff; }
+        .search-box { padding: 10px; width: 100%; margin: 10px 0; border: 1px solid #ccc; border-radius: 5px; }
+    </style>
+</head>
+<body>
+    <header>Smartphones - TechTrendsHub</header>
+    <div class="container">
+        <input type="text" id="searchInput" class="search-box" placeholder="Search smartphones..." onkeyup="searchPhones()">
+        
+        <div id="smartphone-list">
+            <div class="smartphone">
+                <img src="https://m.media-amazon.com/images/I/81XvGbBFNhL._SL1500_.jpg" alt="iPhone 15 Pro">
+                <h3>iPhone 15 Pro</h3>
+                <p class="specs">6.1-inch OLED | A17 Pro Chip | 48MP Camera | 3274mAh Battery</p>
+                <a href="https://www.amazon.in/dp/B0CHX1T4YC" class="buy-btn" target="_blank">Buy on Amazon</a>
+            </div>
+
+            <div class="smartphone">
+                <img src="https://m.media-amazon.com/images/I/71Ftzmh3XWL._SL1500_.jpg" alt="Samsung Galaxy S24 Ultra">
+                <h3>Samsung Galaxy S24 Ultra</h3>
+                <p class="specs">6.8-inch AMOLED | Snapdragon 8 Gen 3 | 200MP Camera | 5000mAh Battery</p>
+                <a href="https://www.amazon.in/dp/B0BTY4RC57" class="buy-btn" target="_blank">Buy on Amazon</a>
+            </div>
+
+            <div class="smartphone">
+                <img src="https://m.media-amazon.com/images/I/71V--WZVUIL._SL1500_.jpg" alt="OnePlus 12">
+                <h3>OnePlus 12</h3>
+                <p class="specs">6.7-inch AMOLED | Snapdragon 8 Gen 3 | 50MP Camera | 5400mAh Battery</p>
+                <a href="https://www.amazon.in/dp/B0CHX6Z9WR" class="buy-btn" target="_blank">Buy on Amazon</a>
+            </div>
+        </div>
+
+        <h2>Compare Smartphones</h2>
+        <table>
+            <tr>
+                <th>Model</th>
+                <th>Display</th>
+                <th>Processor</th>
+                <th>Camera</th>
+                <th>Battery</th>
+                <th>Buy</th>
+            </tr>
+            <tr>
+                <td>iPhone 15 Pro</td>
+                <td>6.1-inch OLED</td>
+                <td>A17 Pro</td>
+                <td>48MP</td>
+                <td>3274mAh</td>
+                <td><a href="https://www.amazon.in/dp/B0CHX1T4YC" class="buy-btn" target="_blank">Buy</a></td>
+            </tr>
+            <tr>
+                <td>Samsung S24 Ultra</td>
+                <td>6.8-inch AMOLED</td>
+                <td>Snapdragon 8 Gen 3</td>
+                <td>200MP</td>
+                <td>5000mAh</td>
+                <td><a href="https://www.amazon.in/dp/B0BTY4RC57" class="buy-btn" target="_blank">Buy</a></td>
+            </tr>
+            <tr>
+                <td>OnePlus 12</td>
+                <td>6.7-inch AMOLED</td>
+                <td>Snapdragon 8 Gen 3</td>
+                <td>50MP</td>
+                <td>5400mAh</td>
+                <td><a href="https://www.amazon.in/dp/B0CHX6Z9WR" class="buy-btn" target="_blank">Buy</a></td>
+            </tr>
+        </table>
+    </div>
+
+    <script>
+        function searchPhones() {
+            let input = document.getElementById("searchInput").value.toLowerCase();
+            let phones = document.getElementsByClassName("smartphone");
+
+            for (let phone of phones) {
+                let title = phone.getElementsByTagName("h3")[0].innerText.toLowerCase();
+                phone.style.display = title.includes(input) ? "block" : "none";
+            }
+        }
+    </script>
+</body>
+</html>

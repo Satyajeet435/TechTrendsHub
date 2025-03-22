@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smartphones - TechTrendsHub</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #f4f4f4; }
+        header { background: #222; color: #fff; padding: 20px; text-align: center; font-size: 24px; }
+        .container { width: 90%; margin: auto; padding: 20px; }
+        .comparison-table { width: 100%; border-collapse: collapse; margin-top: 20px; text-align: center; display: none; }
+        .comparison-table th, .comparison-table td { padding: 10px; border: 1px solid #ddd; }
+        .comparison-table th { background: #333; color: #fff; }
+        .comparison-table img { width: 100px; border-radius: 8px; }
+        .search-box, .filter-box { padding: 10px; width: 100%; margin: 10px 0; border: 1px solid #ccc; border-radius: 5px; }
+        .compare-checkbox { margin-right: 10px; }
+        .compare-btn { display: block; margin: 20px auto; padding: 10px 20px; background: #007bff; color: white; border: none; cursor: pointer; border-radius: 5px; }
+        .compare-btn:hover { background: #0056b3; }
+        .phone-selection { display: flex; flex-wrap: wrap; gap: 20px; }
+        .phone-option { text-align: center; padding: 10px; background: white; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.2); }
+        .phone-option img { width: 100px; display: block; margin: 10px auto; }
+    </style>
+</head>
+<body>
+    <header>Smartphones - TechTrendsHub</header>
+    <div class="container">
+        <input type="text" id="searchInput" class="search-box" placeholder="Search smartphones..." onkeyup="searchPhones()">
+        
+        <label for="brandFilter">Filter by Brand:</label>
+        <select id="brandFilter" class="filter-box" onchange="filterPhones()">
+            <option value="">All</option>
+            <option value="Apple">Apple</option>
+            <option value="Samsung">Samsung</option>
+            <option value="OnePlus">OnePlus</option>
+        </select>
+
+        <h2>Select Smartphones to Compare</h2>
+        <div class="phone-selection" id="phoneSelection">
+            <div class="phone-option">
+                <img src="https://m.media-amazon.com/images/I/81XvGbBFNhL._SL1500_.jpg" alt="iPhone 15 Pro">
+                <label><input type="checkbox" class="compare-checkbox" value="iPhone 15 Pro"> iPhone 15 Pro</label>
+            </div>
+            <div class="phone-option">
+                <img src="https://m.media-amazon.com/images/I/71Ftzmh3XWL._SL1500_.jpg" alt="Samsung S24 Ultra">
+                <label><input type="checkbox" class="compare-checkbox" value="Samsung S24 Ultra"> Samsung S24 Ultra</label>
+            </div>
+            <div class="phone-option">
+                <img src="https://m.media-amazon.com/images/I/71V--WZVUIL._SL1500_.jpg" alt="OnePlus 12">
+                <label><input type="checkbox" class="compare-checkbox" value="OnePlus 12"> OnePlus 12</label>
+            </div>
+        </div>
+        
+        <button class="compare-btn" onclick="showComparison()">Compare</button>
+
+        <h2 id="comparisonHeading" style="display: none;">Compare Smartphones</h2>
+        <table class="comparison-table" id="comparisonTable"></table>
+    </div>
+
+    <script>
+        const phoneData = {
+            "iPhone 15 Pro": {
+                image: "https://m.media-amazon.com/images/I/81XvGbBFNhL._SL1500_.jpg",
+                display: "6.1-inch OLED",
+                processor: "A17 Pro",
+                camera: "48MP",
+                battery: "3274mAh",
+                ram: "8GB",
+                storage: "256GB",
+                os: "iOS 17",
+                charging: "20W"
+            },
+            "Samsung S24 Ultra": {
+                image: "https://m.media-amazon.com/images/I/71Ftzmh3XWL._SL1500_.jpg",
+                display: "6.8-inch AMOLED",
+                processor: "Snapdragon 8 Gen 3",
+                camera: "200MP",
+                battery: "5000mAh",
+                ram: "12GB",
+                storage: "512GB",
+                os: "Android 14 (One UI)",
+                charging: "45W"
+            },
+            "OnePlus 12": {
+                image: "https://m.media-amazon.com/images/I/71V--WZVUIL._SL1500_.jpg",
+                display: "6.7-inch AMOLED",
+                processor: "Snapdragon 8 Gen 3",
+                camera: "50MP",
+                battery: "5400mAh",
+                ram: "16GB",
+                storage: "256GB",
+                os: "Android 14 (OxygenOS)",
+                charging: "100W"
+            }
+        };
+
+        function showComparison() {
+            let selectedPhones = [];
+            document.querySelectorAll(".compare-checkbox:checked").forEach(checkbox => {
+                selectedPhones.push(checkbox.value);
+            });
+
+            if (selectedPhones.length < 1 || selectedPhones.length > 3) {
+                alert("Please select 1 to 3 phones to compare.");
+                return;
+            }
+
+            let table = document.getElementById("comparisonTable");
+            let heading = document.getElementById("comparisonHeading");
+
+            table.innerHTML = ""; 
+            heading.style.display = "block";
+            table.style.display = "table";
+
+            let specs = ["Display", "Processor", "Camera", "Battery", "RAM", "Storage", "OS", "Charging Speed"];
+            let keys = ["display", "processor", "camera", "battery", "ram", "storage", "os", "charging"];
+
+            let headerRow = document.createElement("tr");
+            let specHeader = document.createElement("th");
+            specHeader.textContent = "Specification";
+            headerRow.appendChild(specHeader);
+
+            selectedPhones.forEach(phone => {
+                let th = document.createElement("th");
+                th.innerHTML = `<img src="${phoneData[phone].image}" width="100"><br>${phone}`;
+                headerRow.appendChild(th);
+            });
+
+            table.appendChild(headerRow);
+
+            for (let i = 0; i < specs.length; i++) {
+                let row = document.createElement("tr");
+                let specName = document.createElement("td");
+                specName.textContent = specs[i];
+                row.appendChild(specName);
+
+                selectedPhones.forEach(phone => {
+                    let value = document.createElement("td");
+                    value.textContent = phoneData[phone][keys[i]];
+                    row.appendChild(value);
+                });
+
+                table.appendChild(row);
+            }
+        }
+    </script>
+</body>
+</html>
