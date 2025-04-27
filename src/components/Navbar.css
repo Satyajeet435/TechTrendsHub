@@ -1,0 +1,65 @@
+/* Navbar styles */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--bg-color);
+    padding: 15px 30px;
+    position: sticky;
+    top: 0;
+    width: 100%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: background 0.3s ease-in-out;
+  }
+  
+  .logo a {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--text-color);
+    text-decoration: none;
+  }
+  
+  .nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+  }
+  
+  .nav-links li {
+    display: inline;
+  }
+  
+  .nav-links a {
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: bold;
+    color: var(--text-color);
+    transition: color 0.3s ease-in-out;
+  }
+  
+  .nav-links a:hover {
+    color: #ff6f61;
+  }
+  
+  /* Dark Mode Styles */
+  [data-theme="dark"] .navbar {
+    background: #222;
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+  }
+  
+  .theme-toggle {
+    background: none;
+    border: 2px solid var(--text-color);
+    padding: 5px 15px;
+    font-size: 1rem;
+    cursor: pointer;
+    color: var(--text-color);
+    border-radius: 20px;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .theme-toggle:hover {
+    background: var(--text-color);
+    color: var(--bg-color);
+  }
+  

@@ -1,0 +1,107 @@
+/* General Styling */
+.phone-comparison-container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Heading Style */
+h2 {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    padding: 10px 0;
+    border-bottom: 2px solid #eee;
+}
+
+/* Comparison Table */
+.comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background: #fafafa;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+/* Table Headers */
+.comparison-table th {
+    background: linear-gradient(135deg, #007bff, #0056b3);
+    color: white;
+    padding: 12px;
+    text-align: center;
+    font-size: 16px;
+}
+
+/* Table Cells */
+.comparison-table td {
+    padding: 12px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Image Styling */
+.comparison-table img {
+    width: 80px;
+    height: auto;
+    border-radius: 8px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.comparison-table img:hover {
+    transform: scale(1.1);
+}
+
+/* Buy Button */
+.buy-btn {
+    display: inline-block;
+    padding: 8px 16px;
+    margin-top: 5px;
+    background: #28a745;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+.buy-btn:hover {
+    background: #218838;
+}
+
+/* Checkbox Styling */
+.compare-checkbox {
+    transform: scale(1.2);
+    cursor: pointer;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .comparison-table {
+        font-size: 14px;
+    }
+    .comparison-table img {
+        width: 60px;
+    }
+    .buy-btn {
+        padding: 6px 12px;
+        font-size: 14px;
+    }
+}
+
+/* Fade-in Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
